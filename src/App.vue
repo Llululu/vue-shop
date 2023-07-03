@@ -3,9 +3,17 @@
 </script>
 
 <template>
-<el-button type="primary">primary</el-button>
+<div class="app">
+    <RouterView></RouterView>
+    <div class="test">test</div>
+</div>
 </template>
 
-<style scoped>
-
+<style scoped lang="scss">
+.app {
+    
+}
+.test{
+    color: $priceColor;
+}
 </style>

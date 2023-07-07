@@ -1,14 +1,10 @@
 <script setup>
-import { getTopCategoryAPI } from '@/apis/category';
-import {getBannerAPI} from '@/apis/home'
-import { onMounted, ref } from 'vue';
-import { useRoute, onBeforeRouteUpdate } from 'vue-router';
 import GoodsItem from '@/views/Home/components/GoodsItem.vue'
 import { useBanner } from './composables/useBanner';
-import { userCategory } from './composables/userCategory';
+import { useCategory } from './composables/useCategory';
 
 const {bannerList} = useBanner()
-const {categoryData} = userCategory()
+const {categoryData} = useCategory()
 </script>
 
 <template>
@@ -18,7 +14,7 @@ const {categoryData} = userCategory()
       <div class="bread-container">
         <el-breadcrumb separator=">">
           <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
-          <el-breadcrumb-item>{{ topCategory.name }}</el-breadcrumb-item>
+          <el-breadcrumb-item>{{ categoryData.name }}</el-breadcrumb-item>
         </el-breadcrumb>
       </div>
 
@@ -35,15 +31,15 @@ const {categoryData} = userCategory()
       <div class="sub-list">
         <h3>全部分类</h3>
         <ul>
-            <li v-for="i in topCategory.children" :key="i.id">
-            <RouterLink to="/">
+            <li v-for="i in categoryData.children" :key="i.id">
+            <RouterLink :to="`/category/sub/${i.id}`">
                 <img :src="i.picture" />
                 <p>{{ i.name }}</p>
             </RouterLink>
             </li>
         </ul>
       </div>
-      <div class="ref-goods" v-for="item in topCategory.children" :key="item.id">
+      <div class="ref-goods" v-for="item in categoryData.children" :key="item.id">
         <div class="head">
             <h3>- {{ item.name }}-</h3>
         </div>

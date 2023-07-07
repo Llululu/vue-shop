@@ -9,13 +9,19 @@ const router = createRouter({
       component: () => import('../views/Layout/index.vue'),
       children: [
         {
+          path: '',
+          name: 'home',
+          component: () => import('../views/Home/index.vue')
+        },
+        {
           path: 'category/:id',
           name: 'category',
           component: () => import('../views/Category/index.vue')
         },
         {
-          path: '',
-          component: () => import('../views/Home/index.vue')
+          path: 'category/sub/:id',
+          name: 'subCategory',
+          component: () => import('../views/SubCategory/index.vue')
         }
       ]
     },
@@ -25,7 +31,13 @@ const router = createRouter({
       component: () => import('../views/Login/index.vue')
     },
     
-  ]
+  ],
+  // 路由滚动行为定制
+  scrollBehavior () {
+    return {
+      top: 0
+    }
+  }
 })
 
 export default router

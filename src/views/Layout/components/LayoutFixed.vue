@@ -15,7 +15,7 @@ const categoryStore = useCategoryStore()
       <ul class="app-header-nav">
         <template v-for="item in categoryStore.categoryList">
           <li>
-            <RouterLink to="/">{{ item.name }}</RouterLink>
+            <RouterLink :to="`/category/${item.id}`">{{ item.name }}</RouterLink>
           </li>
         </template>
         

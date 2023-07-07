@@ -9,7 +9,8 @@ const router = createRouter({
       component: () => import('../views/Layout/index.vue'),
       children: [
         {
-          path: 'category',
+          path: 'category/:id',
+          name: 'category',
           component: () => import('../views/Category/index.vue')
         },
         {
@@ -22,7 +23,8 @@ const router = createRouter({
       path: '/login',
       name: 'login',
       component: () => import('../views/Login/index.vue')
-    }
+    },
+    
   ]
 })
 

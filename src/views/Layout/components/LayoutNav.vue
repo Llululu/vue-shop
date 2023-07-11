@@ -1,12 +1,12 @@
 <script setup>
-import { useUserStore } from '@/stores/user';
+import { useUserStore } from '@/stores/userStore';
 import { useRouter } from 'vue-router';
 const userStore = useUserStore()
 const router = useRouter()
 
 const handleConfirm = () => {
   // 1.清除用户数据
-  userStore.clearUserInfo
+  userStore.clearUserInfo()
   // 2.跳转到登录页面
   router.push('/login')
 }

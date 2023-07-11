@@ -2,7 +2,7 @@
 import { ref } from 'vue'
 import { loginAPI } from '@/apis/user';
 import { useRouter } from 'vue-router';
-import {useUserStore} from '@/stores/user'
+import {useUserStore} from '@/stores/userStore'
 
 // 表单数据对象
 const userInfo = ref({

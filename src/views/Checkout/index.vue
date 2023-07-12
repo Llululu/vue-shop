@@ -47,7 +47,7 @@ const createOrder = async () => {
         count: item.count
       }
     }),
-    addressId: curAddress.value.id
+    addressId: curAddress.value?.id
   })
   const orderId = res.result.id
   router.push({
